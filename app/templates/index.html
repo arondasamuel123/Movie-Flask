@@ -14,11 +14,13 @@
 
         <!-- Styles block -->
     
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
-    
+
+
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
 </head>
 <body>
 <!-- Content block -->
@@ -32,14 +34,14 @@
 </div>
  <!-- Popular movie section  -->
  <h3> Popular Movies</h3>
- <ul>
+ 
+ <div class = "row">
     {{ macro.displayMovieList(popular)}}
-    
-</ul>
+</div>
 
 <!-- Upcoming movie  -->
 <h3> Upcoming Movies </h3>
-<ul>
+<ul></ul>
    <!-- {% for upcoming_movie in upcoming_movies %}
        <li>{{ upcoming_movie.title}}</li>
    {% endfor %} -->
