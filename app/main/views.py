@@ -2,7 +2,7 @@ from flask import render_template
 from flask import render_template,request,redirect,url_for
 from ..request import get_movies, get_movie, search_movie
 from ..models import Review
-from .forms import ReviewForm
+from .forms import ReviewForm,UpdateProfile
 from . import main
 from flask_login import login_required
 # Review = reviews.Review
@@ -66,4 +66,18 @@ def new_review(movie_id):
     
     title = f'{movie.title} review'
     return render_template('new_review.html', title = title, review_form = form, movie = movie)
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = user).first()
+    
+    if user is None:
+        abort(404)
+    profile_form = UpdateProfile()
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        db.session.add(user)
+        db.session.commit()
+        
+        return redirect(url_for('.profile',uname=user.username))
+    return render_template('profile/update.html', user = user)
 
