@@ -9,7 +9,7 @@ class UserModelTest(unittest.TestCase):
         self.assertTrue(self.new_password.pass_secure is not None)
         
     def test_no_access_password(self):
-        with self.assertRaises(AttributeError)
+        self.assertRaises(AttributeError)
         
     def test_password_verification(self):
         self.assertTrue(self.new_password.verify_password('123456'))

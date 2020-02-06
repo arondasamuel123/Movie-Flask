@@ -10,6 +10,13 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:123456@localhost/watchlist'
     
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    
+    #  email configurations
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
 class ProdConfig(Config):
     '''
@@ -19,6 +26,9 @@ class ProdConfig(Config):
         Config:The parent configuration class with General configuration settings
 
    '''
+# class TestConfig(Config):
+#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:123456@localhost/watchlist_test'
+
 class DevConfig(Config):
     '''
     Development  configuration child class
@@ -31,5 +41,6 @@ class DevConfig(Config):
 
 config_options = {
 'development':DevConfig,
-'production':ProdConfig
+'production':ProdConfig,
+# 'test':TestConfig
 }
