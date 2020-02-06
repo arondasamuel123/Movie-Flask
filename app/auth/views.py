@@ -8,6 +8,7 @@ from flask_login import login_user
 from flask_login import logout_user
 from flask_login import login_required
 from ..email import mail_message
+import markdown2
 
 
 @auth.route('/login', methods=['GET','POST'])
