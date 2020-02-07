@@ -6,6 +6,7 @@ from . import main
 from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
+import markdown2
 
 
 # Review = reviews.Review
@@ -69,7 +70,7 @@ def new_review(movie_id):
 
         # save review method
         new_review.save_review()
-        return redirect(url_for('.movie',movie_id = movie.id ))
+        return redirect(url_for('.movie',movie_id = movie.movie_id ))
 
     title = f'{movie.title} review'
     return render_template('new_review.html',title = title, review_form=form, movie=movie)

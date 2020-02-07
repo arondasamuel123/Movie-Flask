@@ -2,12 +2,13 @@
 
 {% for movie in movie_list %}
 <div class="col-sm-3 movie-card">
-    <div class = 
+    <div>
     <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
     <li class="text-center">
         <a href="/movies/{{movie.movie_id}}">
             {{ movie.title|truncate(10)}}</a>
     </li>
+    </div>
 </div>
 
 {% endfor %}
@@ -27,7 +28,7 @@
         <p>{{review.user.username}}</p>
       </div>
       <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-        <h2> <a href="{{url_for('main.single_review',id=review.review_id)}}">{{review.movie_title}}</a> </h2>
+        <h2> <a href="{{url_for('main.single_review',review_id=review.review_id)}}">{{review.movie_title}}</a> </h2>
       </div>
     </div>
 
